@@ -1,0 +1,16 @@
+.idea/
+.pycharm/
+
+__pycache__/
+
+db.sqlite3
+.env
+.dockerignore
+
+*.log
+*.pot
+*.py[cod]
+
+
+.data/
+.data/**

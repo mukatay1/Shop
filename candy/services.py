@@ -12,7 +12,6 @@ class CandyService:
     def __init__(self, request):
         self.request = request
 
-
     def get_filtered_candies(self):
         input_data = self.request.GET.get('candy_search', 'Error')
         candies = CandyRepository.filter_candy(1, input_data)
@@ -21,7 +20,7 @@ class CandyService:
     @staticmethod
     def _build_context(candies):
         return {
-            'candies': candies,
+            'candies': candies ,
             'title': 'Главная страница',
         }
 
