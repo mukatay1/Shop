@@ -14,6 +14,8 @@ class CandyRepository:
     def filter_candy(limit: int = 0, name: str = '') -> Candy:
         if name:
             candies = Candy.objects.filter(name__contains=name)
-        if limit:
-            return candies[:limit]
-        return candies
+            if limit == 1:
+                return candies.first()
+            if limit:
+                return candies[:limit]
+            return candies

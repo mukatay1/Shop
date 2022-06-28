@@ -12,22 +12,22 @@ class CandyService:
     def __init__(self, request):
         self.request = request
 
+
+    def get_filtered_candies(self):
+        input_data = self.request.GET.get('candy_search', 'Error')
+        candies = CandyRepository.filter_candy(1, input_data)
+        return candies
+
     @staticmethod
-    def _build_context(candies, recent_candies):
+    def _build_context(candies):
         return {
             'candies': candies,
-            'recent_candies': recent_candies,
             'title': 'Главная страница',
         }
 
     def execute(self):
         candies = CandyRepository.get_all_candy()
-        lst = CandySessionManager(self.request).get_candy_session()
-        recent_candies = []
-        if lst:
-            recent_candies = [Candy.objects.get(pk=i) for i in lst]
-
-        return self._build_context(candies, recent_candies)
+        return self._build_context(candies)
 
 
 class CandyRecentService:
@@ -60,7 +60,7 @@ class CandyRecentService:
         else:
             self._create_candy_from_session(candy_pk)
         self.session_manager.modifying_dictionary_in_session()
-        if len(self._get_candy_from_session()) > 10:
+        if len(self._get_candy_from_session()) > 5:
             self.request.session[RECENT_VIEWS].pop()
 
     @staticmethod

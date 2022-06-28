@@ -36,8 +36,7 @@ class CandyDetail(DetailView):
 
 class CandySearch(View):
     def get(self, request):
-        input_data = request.GET.get('candy_search', 'Error')
-        candy = Candy.objects.filter(name__contains=input_data).first()
+        candy = CandyService(request).get_filtered_candies()
         if candy:
             return redirect(reverse('candy_detail', kwargs={'candy_slug': candy.slug}))
         return render(request, '404.html')
