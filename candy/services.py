@@ -14,14 +14,14 @@ class CandyService:
 
     def get_filtered_candies(self):
         input_data = self.request.GET.get('candy_search', 'Error')
-        candies = CandyRepository.filter_candy(1, input_data)
+        candies = CandyRepository.filter_candy(1, input_data.capitalize())
         return candies
 
     @staticmethod
     def _build_context(candies):
         return {
             'candies': candies ,
-            'title': 'Главная страница',
+            'title': 'CampitShop - Главная страница',
         }
 
     def execute(self):

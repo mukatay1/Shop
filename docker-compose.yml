@@ -22,6 +22,31 @@ services:
         - POSTGRES_PASSWORD=postgres
       container_name: database
 
+  redis:
+    image: redis
+    container_name: redis_container
+
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A CampitShop worker -l info
+    volumes:
+      - .:/django
+    container_name: celery_container
+    depends_on:
+      - redis
+      - shop
+
+  celery-beat:
+    build: .
+    command: celery -A CampitShop beat -l info
+    volumes:
+      - .:/django
+    depends_on:
+      - shop
+      - redis
+
 
 
 

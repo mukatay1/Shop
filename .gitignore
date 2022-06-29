@@ -13,5 +13,4 @@ db.sqlite3
 
 
 .data/
-!data/
 .data/**
