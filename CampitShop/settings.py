@@ -146,7 +146,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-RESULTS_CACHE_SIZE = 100
 
-CELERY_BROKER_URL = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'redis://redis:6379'
+RESULTS_CACHE_SIZE = os.environ.get("RESULTS_CACHE_SIZE")
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
