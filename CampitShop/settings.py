@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'accounts.apps.AccountsConfig',
     'candy.apps.CandyConfig',
     'cart.apps.CartConfig',
 
@@ -147,6 +148,17 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-RESULTS_CACHE_SIZE = os.environ.get("RESULTS_CACHE_SIZE")
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+RESULTS_CACHE_SIZE = 100
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mr.mukatai@gmail.com'
+EMAIL_HOST_PASSWORD = 'qqdmijtkjkkudyjp'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

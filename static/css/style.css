@@ -1,21 +1,5 @@
 @charset "UTF-8";
-/*-------------------------------------------------------*/
-/* Table of Content
 
-1. General
-2. Typography
-3. Navigation
-4. Layout
-5. Blog
-6. Portfolio
-7. Shortcodes
-8. Footer
-9. Responsive
-
-/*-------------------------------------------------------*/
-/*-------------------------------------------------------*/
-/* General
-/*-------------------------------------------------------*/
 .clearfix {
   *zoom: 1;
 }
@@ -1836,8 +1820,8 @@ ol.numbers {
   background-position: center;
 }
 
-#flexslider-hero .img-holder.img-1 {
-  background-image: url(../img/slider/1.jpg);
+#flexslider-hero .img-holder.img-5 {
+  background-image: url(../img/slider/img.png);
 }
 
 #flexslider-hero .img-holder.img-2 {
@@ -1852,9 +1836,7 @@ ol.numbers {
   background-image: url(../img/slider/4.jpg);
 }
 
-/*-------------------------------------------------------*/
-/* Testimonials
-/*-------------------------------------------------------*/
+
 .testimonials .testimonial {
   padding: 0 100px;
 }

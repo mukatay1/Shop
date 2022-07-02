@@ -11,6 +11,8 @@ from .services import (CandyService,
 
 from .models import Candy
 
+from .tasks import send_email
+
 
 # Create your views here.
 class HomePage(TemplateView):
