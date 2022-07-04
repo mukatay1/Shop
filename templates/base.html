@@ -53,8 +53,7 @@
                             <li class="top-bar-link"><a href="#">Мой аккаунт</a></li>
                             {% endif %}
 
-                            <lisi class="top-bar-link"><a href="#">Cписок желаний</a></lisi>
-                            <!--                            <li class="top-bar-link"><a href="#">Рассылка</a></li>-->
+                            <li class="top-bar-link"><a href="#">Cписок желаний</a></li>
                             {% if request.user.is_anonymous %}
                             <li class="top-bar-link"><a href="{% url 'auth' %}">Авторизоваться</a></li>
                             {% endif %}
@@ -62,17 +61,7 @@
                         </ul>
 
                         <ul class="col-sm-6 text-right top-bar-currency-language">
-                            <!--                            <li class="language">-->
-                            <!--                                Language: <a href="#">ENG<i class="fa fa-angle-down"></i></a>-->
-                            <!--                                <div class="language-dropdown">-->
-                            <!--                                    <ul>-->
-                            <!--                                        <li><a href="#">English</a></li>-->
-                            <!--                                        <li><a href="#">Spanish</a></li>-->
-                            <!--                                        <li><a href="#">German</a></li>-->
-                            <!--                                        <li><a href="#">Chinese</a></li>-->
-                            <!--                                    </ul>-->
-                            <!--                                </div>-->
-                            <!--                            </li>-->
+
                             <li>
                                 <div class="social-icons">
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -203,7 +192,7 @@
                                 </div>
                                 <div class="menu-cart-amount right">
                       <span>
-                        Корзина
+                       <a href="{% url 'cart' %}">Корзина</a>
                       </span>
                                 </div>
                             </div> <!-- end cart -->

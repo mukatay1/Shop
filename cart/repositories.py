@@ -11,6 +11,4 @@ class CartItemRepository:
         return limit
 
 
-if __name__ == '__main__':
-    lst = CartItemRepository.get_all_cart_items()
-    print(type(lst))
+

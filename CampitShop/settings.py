@@ -161,6 +161,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mr.mukatai@gmail.com'
 EMAIL_HOST_PASSWORD = 'qqdmijtkjkkudyjp'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = os.environ.get('LOGIN_REDIRECT_URL')
+LOGOUT_REDIRECT_URL = os.environ.get('LOGOUT_REDIRECT_URL')
 
