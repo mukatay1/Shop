@@ -11,16 +11,18 @@ services:
     command: python manage.py runserver 0.0.0.0:9000
     depends_on:
       - db
+      - celery
+      - celery-beat
 
   db:
-      image: postgres
-      volumes:
-        - ./data/db:/var/lib/postgresql/data
-      environment:
-        - POSTGRES_DB=postgres
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postgres
-      container_name: database
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: database
 
   redis:
     image: redis
@@ -36,7 +38,6 @@ services:
     container_name: celery_container
     depends_on:
       - redis
-      - shop
 
   celery-beat:
     build: .
@@ -44,12 +45,4 @@ services:
     volumes:
       - .:/django
     depends_on:
-      - shop
       - redis
-
-
-
-
-
-
-

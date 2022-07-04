@@ -1,8 +1,19 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+
+from django.contrib.auth import (authenticate,
+                                 login,
+                                 logout,
+                                 )
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import redirect, render
+
+from django.shortcuts import (redirect,
+                              render,
+                              )
 from django.urls import reverse_lazy
+
+from .forms import UserCreationForm
+from .repositories import NewsletterRepository
+from .tasks import send_email
 
 
 def auth(request):
@@ -50,3 +61,12 @@ def auth(request):
 def logout_user(request):
     logout(request)
     return redirect(reverse_lazy('home'))
+
+
+def newsletter(request):
+    email = request.POST.get('newsletter_name')
+    if request.user.is_authenticated:
+        NewsletterRepository.create(email, request.user)
+    else:
+        NewsletterRepository.create(email)
+    return redirect('home')

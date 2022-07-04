@@ -119,8 +119,9 @@
         <div class="col-sm-12">
             <div class="newsletter-box">
                 <h5 class="uppercase">ПОДПИШИТЕСЬ, ЧТОБЫ ПОЛУЧАТЬ НАШИ ОБНОВЛЕНИЯ</h5>
-                <form>
-                    <input type="email" class="newsletter-input" placeholder="Ваша почта">
+                <form method="post" action="{% url 'newsletter' %}">
+                    {% csrf_token %}
+                    <input type="email" class="newsletter-input" placeholder="Ваша почта" name="newsletter_name">
                     <input type="submit" class="newsletter-submit btn btn-md btn-dark" value="Подписаться">
                 </form>
             </div>
